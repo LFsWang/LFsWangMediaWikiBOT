@@ -4,6 +4,9 @@ $post['login']['format'] ='json';
 $post['login']['lgname'] =$settings['user'];
 $post['login']['lgpassword'] =$settings['pass'];
 
+$post['logout']['action'] ='logout';
+$post['logout']['format']	='json';
+
 $post['allpage']['action']	='query';
 $post['allpage']['format']	='json';
 $post['allpage']['list'  ]	='allpages';
