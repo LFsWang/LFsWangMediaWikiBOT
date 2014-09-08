@@ -29,7 +29,7 @@ function FixComma( $page , $pid )
     return ;
   }
   
-  $inHtmlTag = false;
+  $inHtmlTag = 0;
   $count = 0;
   $strlen = mb_strlen( $cont , 'utf-8');
 
@@ -37,13 +37,13 @@ function FixComma( $page , $pid )
   {
     //Maybe it will very slow
     $w = mb_substr($cont ,$i ,1, 'utf-8');
-    if( $w === '<' ){
-      $inHtmlTag = true;
+    if( $w === '<' || $w === '[' || $w === '{'){
+      $inHtmlTag ++;
     }
-    if( $w === '>' ){
-      $inHtmlTag = false;
+    if( $w === '>' || $w === ']' || $w === '{'){
+      $inHtmlTag --;
     }
-    if( !$inHtmlTag && isset( $replace[$w] ) ){
+    if( $inHtmlTag === 0 && isset( $replace[$w] ) ){
       //echo $w."=>".$replace[$w]."\n";
       $w = $replace[$w];
       $count++;
@@ -73,7 +73,7 @@ $json = httpRequestJSON($settings['wikiapi'],$post['allpage']);
 echo "Function:Fix Comma\n";
 
 
-FixComma( '竹園Wiki:沙盒' , 369 );
+//FixComma( '竹園Wiki:沙盒' , 369 );
 
 foreach($json->query->allpages as $i)
 {
