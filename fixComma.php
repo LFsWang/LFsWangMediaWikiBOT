@@ -4,7 +4,6 @@ require_once('lib/LFsWangBOT.php');
 $replace = array(
   ',' => '，',
   '?' => '？',
-  ':' => '：',
   '(' => '（',
   ')' => '）',
 );
