@@ -40,7 +40,7 @@ function FixComma( $page , $pid )
     if( $w === '<' || $w === '[' || $w === '{'){
       $inHtmlTag ++;
     }
-    if( $w === '>' || $w === ']' || $w === '{'){
+    if( $w === '>' || $w === ']' || $w === '}'){
       $inHtmlTag --;
     }
     if( $inHtmlTag === 0 && isset( $replace[$w] ) ){
